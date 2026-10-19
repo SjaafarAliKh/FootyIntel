@@ -130,6 +130,74 @@ function updateButtons() {
 }
 
 
+function isCorrect(guess) {
+    const typed = guess.trim().toLowerCase();
+    const fullName = deck[index].name.toLowerCase();
+    return (' ' + fullName).endsWith(' ' + typed);
+}
+
+
+function handleGuess(event) {
+    event.preventDefault();
+    if (gameOver || guessEl.value.trim() === '') return;
+
+    if (isCorrect(guessEl.value)) {
+        score += 4 - clueCount;
+        updateHighScore();
+        playAnimation('pop');
+        index++;
+        clueCount = 1;
+        guessEl.value = '';
+        if (index === deck.length) {
+            winGame();
+            return;
+        }
+        messageEl.textContent = 'Correct! Next player...';
+        playSound('correct');
+    } else {
+        lives--;
+        playAnimation('shake');
+        if (lives === 0) {
+            loseGame();
+            return;
+        }
+        messageEl.textContent = 'Wrong! Try again.';
+        playSound('wrong');
+    }
+    render();
+}
+
+
+function handleNextClue() {
+    if (gameOver || clueCount === 3) return;
+    clueCount++;
+    render();
+}
+
+
+function winGame() {
+    gameOver = true;
+    index = deck.length - 1;
+    messageEl.textContent = `You win! Final score: ${score}`;
+    playSound('win');
+    render();
+}
+
+
+function loseGame() {
+    gameOver = true;
+    messageEl.textContent = `Game over! It was ${deck[index].name}. Score: ${score}`;
+    playSound('lose');
+    render();
+}
+
+
+function updateHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('highScore', highScore);
+    }
+}
 
 
 
