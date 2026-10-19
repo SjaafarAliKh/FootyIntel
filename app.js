@@ -200,6 +200,26 @@ function updateHighScore() {
 }
 
 
+function toggleTheme() {
+    const root = document.documentElement;
+
+    if (root.dataset.theme === 'light') {
+        root.dataset.theme = 'dark';
+    } else {
+        root.dataset.theme = 'light';
+    }
+
+    localStorage.setItem('theme', root.dataset.theme);
+    themeBtnEl.textContent = root.dataset.theme === 'light' ? '☀️' : '🌙';
+}
+
+
+function loadTheme() {
+    const saved = localStorage.getItem('theme') || 'dark';
+
+    document.documentElement.dataset.theme = saved;
+    themeBtnEl.textContent = saved === 'light' ? '☀️' : '🌙';
+}
 
 /*----------------------------- Event Listeners -----------------------------*/
 
