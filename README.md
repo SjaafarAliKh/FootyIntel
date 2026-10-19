@@ -1,5 +1,8 @@
 # ⚽ FootyIntel - Guess the Footballer
 
+🎮 **Play the game:** [FootyIntel](https://sjaafaralikh.github.io/FootyIntel/)
+
+---
 
 ## Technologies Used
 
