@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600;700&display=swap');
+
+:root {
+  --bg: #092c20;
+  --panel: #114a37;
+  --card: #185a43;
+  --card-text: #ffffff;
+  --text: #ffffff;
+}
+
+:root[data-theme="light"] {
+  --bg: #2e7d32;
+  --panel: #1b5e20;
+  --card: #ffffff;
+  --card-text: #1b5e20;
+  --text: #ffffff;
+}
+
+body {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Teko', Arial, sans-serif;
+  font-size: 22px;
+  text-align: center;
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+
+
