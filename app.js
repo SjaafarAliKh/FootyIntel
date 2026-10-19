@@ -221,6 +221,60 @@ function loadTheme() {
     themeBtnEl.textContent = saved === 'light' ? '☀️' : '🌙';
 }
 
+function playSound(type) {
+    try {
+        // Initialize AudioContext if not already created
+        audioCtx = audioCtx || new AudioContext();
+
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        // Set sound wave type to sine for a soft tone
+        osc.type = 'sine';
+
+        // Define frequencies and durations based on the game event
+        let freq = 440;
+        let duration = 0.15;
+
+        if (type === 'correct') {
+            freq = 600; // Brighter tone for correct guess
+        } else if (type === 'wrong') {
+            freq = 200; // Low tone for wrong guess
+        } else if (type === 'win') {
+            freq = 800; // High victory tone
+            duration = 0.3;
+        } else if (type === 'lose') {
+            freq = 150; // Low game over tone
+            duration = 0.3;
+        }
+
+        osc.frequency.value = freq;
+
+        // Control volume smoothly to avoid harsh clicks
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+        // Connect and play
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+        console.log('Audio not supported');
+    }
+}
+
+
+function playAnimation(className) {
+    cluesEl.classList.remove('shake', 'pop');
+    void cluesEl.offsetWidth;   // restart the animation
+    cluesEl.classList.add(className);
+}
+
+
+
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 
