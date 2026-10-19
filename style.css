@@ -27,6 +27,30 @@ body {
   color: var(--text);
 }
 
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 8px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#clues {
+  list-style: none;
+  padding: 0;
+}
+
+#clues li {
+  background: var(--card);
+  color: var(--card-text);
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.4s;
+}
 
 
 
