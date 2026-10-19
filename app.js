@@ -276,5 +276,10 @@ function playAnimation(className) {
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
-
+loadTheme();
+init();
+themeBtnEl.addEventListener('click', toggleTheme);
+formEl.addEventListener('submit', handleGuess);
+clueBtnEl.addEventListener('click', handleNextClue);
+resetBtnEl.addEventListener('click', init);
+difficultyEl.addEventListener('change', init);
