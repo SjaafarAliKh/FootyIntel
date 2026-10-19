@@ -99,6 +99,39 @@ function render() {
 }
 
 
+function updateStats() {
+    roundEl.textContent = `${index + 1}/${deck.length}`;
+    scoreEl.textContent = score;
+    highScoreEl.textContent = highScore;
+    livesEl.textContent = lives;
+}
+
+
+function updateClues() {
+    cluesEl.innerHTML = '';
+    let html = '';
+
+    for (let i = 0; i < deck[index].clues.length; i++) {
+        if (i < clueCount) {
+            html += `<li>${deck[index].clues[i]}</li>`;
+        } else {
+            html += `<li>🔒 Locked clue</li>`;
+        }
+    }
+
+    cluesEl.innerHTML = html;
+}
+
+
+function updateButtons() {
+    guessBtnEl.disabled = gameOver;
+    guessEl.disabled = gameOver;
+    clueBtnEl.disabled = gameOver || clueCount === 3;
+}
+
+
+
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 
