@@ -75,6 +75,30 @@ const difficultyEl = document.querySelector('#difficulty');
 
 /*-------------------------------- Functions --------------------------------*/
 
+function init() {
+    console.log('init called');
+
+    deck = players[difficultyEl.value].slice().sort(function () {
+        return Math.random() - 0.5;
+    });
+    index = 0;
+    clueCount = 1;
+    lives = difficulties[difficultyEl.value];
+    score = 0;
+    gameOver = false;
+    guessEl.value = '';
+    messageEl.textContent = 'Who is this player?';
+
+    render();
+}
+
+function render() {
+    updateStats();
+    updateClues();
+    updateButtons();
+}
+
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 
