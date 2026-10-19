@@ -47,9 +47,30 @@ const difficulties = {
 
 
 /*---------------------------- Variables (state) ----------------------------*/
+let deck;
+let index;
+let clueCount;
+let lives;
+let score;
+let gameOver;
+let highScore = Number(localStorage.getItem('highScore')) || 0;
+let audioCtx;
 
 
 /*------------------------ Cached Element References ------------------------*/
+const messageEl = document.querySelector('#message');
+const roundEl = document.querySelector('#round');
+const scoreEl = document.querySelector('#score');
+const livesEl = document.querySelector('#lives');
+const cluesEl = document.querySelector('#clues');
+const formEl = document.querySelector('#guess-form');
+const guessEl = document.querySelector('#guess');
+const guessBtnEl = document.querySelector('#guess-btn');
+const clueBtnEl = document.querySelector('#clue-btn');
+const resetBtnEl = document.querySelector('#reset');
+const highScoreEl = document.querySelector('#high-score');
+const themeBtnEl = document.querySelector('#theme');
+const difficultyEl = document.querySelector('#difficulty');
 
 
 /*-------------------------------- Functions --------------------------------*/
