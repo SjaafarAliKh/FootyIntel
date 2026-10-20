@@ -230,7 +230,7 @@ function playSound(type) {
         const gainNode = audioCtx.createGain();
 
         // Set sound wave type to sine for a soft tone
-        osc.type = 'sine';
+        osc.type = 'triangle';
 
         // Define frequencies and durations based on the game event
         let freq = 440;
@@ -251,7 +251,7 @@ function playSound(type) {
         osc.frequency.value = freq;
 
         // Control volume smoothly to avoid harsh clicks
-        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.8, audioCtx.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
 
         // Connect and play
